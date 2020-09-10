@@ -1,0 +1,1 @@
+{"version":3,"file":"comment.interface.js","sourceRoot":"","sources":["../../src/models/comment.interface.ts"],"names":[],"mappings":"","sourcesContent":["export interface CommentInterface {\r\n  _id: string;\r\n  comment: string;\r\n  date_comment: string;\r\n  id_trip: string;\r\n}\r\n"]}

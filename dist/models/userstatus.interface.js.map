@@ -1,0 +1,1 @@
+{"version":3,"file":"userstatus.interface.js","sourceRoot":"","sources":["../../src/models/userstatus.interface.ts"],"names":[],"mappings":"","sourcesContent":["export interface UserStatusInterface {\r\n  _id: string;\r\n  userstatusid: string;\r\n  statusname: string;\r\n}\r\n"]}
