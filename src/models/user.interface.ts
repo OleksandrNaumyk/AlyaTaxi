@@ -8,6 +8,6 @@ export interface UserInterface {
   photo?: string;
   rating?: number;
   date_add: string;
-  status_id: string;
-  city_id: string;
+  status: string;
+  city: string;
 }

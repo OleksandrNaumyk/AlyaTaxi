@@ -1,5 +1,6 @@
 import {Document, Model, model, Schema} from 'mongoose';
 import {DriverInterface} from '../../models';
+import {CityEnum, UserStatusEnum} from "../../constants";
 
 export type DriverType = DriverInterface & Document
 
@@ -28,7 +29,7 @@ export const DriverSchema: Schema = new Schema<DriverInterface>({
   status: {
     type: Number,
     required: true,
-    default: 1
+    default: UserStatusEnum.PENDING
   },
   photo_driver: {
     type: String,
@@ -71,9 +72,10 @@ export const DriverSchema: Schema = new Schema<DriverInterface>({
     required: true,
     default: Date.now
   },
-  city_id: {
-    type: Number,
-    required: false
+  city: {
+    type: String,
+    required: false,
+    default: CityEnum.LVIV
   }
 
 });

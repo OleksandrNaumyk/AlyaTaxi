@@ -1,5 +1,6 @@
 import {Document, Model, model, Schema} from 'mongoose';
 import {AdminInterface} from '../../models';
+import {CityEnum, UserStatusEnum} from "../../constants";
 
 export type AdminType = AdminInterface & Document
 
@@ -29,9 +30,15 @@ export const AdminSchema: Schema = new Schema<AdminInterface>({
     type: String,
     required: false
   },
-  city_id: {
-    type: Number,
-    required: false
+  status: {
+    type: String,
+    required: true,
+    default: UserStatusEnum.PENDING
+  },
+  city: {
+    type: String,
+    required: false,
+    default: CityEnum.LVIV
   }
 
 });

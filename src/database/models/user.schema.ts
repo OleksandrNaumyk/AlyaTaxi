@@ -1,5 +1,6 @@
 import {Document, Model, model, Schema} from 'mongoose';
 import {UserInterface} from '../../models';
+import {CityEnum, UserStatusEnum} from "../../constants";
 
 export type UserType = UserInterface & Document
 
@@ -37,13 +38,15 @@ export const UserSchema: Schema = new Schema<UserInterface>({
     type: Date,
     default: Date.now
   },
-  status_id: {
-    type: Number,
-    required: true
+  status: {
+    type: String,
+    required: true,
+    default: UserStatusEnum.PENDING
   },
-  city_id: {
-    type: Number,
-    required: true
+  city: {
+    type: String,
+    required: true,
+    default: CityEnum.LVIV
   }
 
 });

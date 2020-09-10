@@ -6,5 +6,5 @@ export interface AdminInterface {
   password: string;
   age: number;
   photo?: string;
-  city_id?: string;
+  city: string;
 }

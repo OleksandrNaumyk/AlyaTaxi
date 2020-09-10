@@ -16,6 +16,6 @@ export interface DriverInterface {
   car_number?: string;
   rating?: string;
   date_add: string;
-  city_id?: string;
+  city: string;
 }
 
