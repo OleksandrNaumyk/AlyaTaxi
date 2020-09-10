@@ -1,1 +1,0 @@
-{"version":3,"file":"tripstatus.interface.js","sourceRoot":"","sources":["../../src/models/tripstatus.interface.ts"],"names":[],"mappings":"","sourcesContent":["export interface TripStatusInterface {\r\n  _id: string;\r\n  trip_status_id: string;\r\n  trip_status_name: string;\r\n}\r\n"]}

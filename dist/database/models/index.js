@@ -16,7 +16,5 @@ __exportStar(require("./city.schema"), exports);
 __exportStar(require("./driver.schema"), exports);
 __exportStar(require("./driverstatus.schema"), exports);
 __exportStar(require("./trip.schema"), exports);
-__exportStar(require("./tripstatus.schema"), exports);
 __exportStar(require("./user.schema"), exports);
-__exportStar(require("./userstatus.schema"), exports);
 //# sourceMappingURL=index.js.map

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TripModel = exports.TripSchema = void 0;
 const mongoose_1 = require("mongoose");
+const constants_1 = require("../../constants");
 exports.TripSchema = new mongoose_1.Schema({
     start: {
         type: String,
@@ -35,9 +36,14 @@ exports.TripSchema = new mongoose_1.Schema({
         type: String,
         required: false
     },
-    status_trip: {
+    rating: {
         type: Number,
         required: false
+    },
+    status_trip: {
+        type: Number,
+        required: false,
+        default: constants_1.StatusTripEnum.REGISTRATED
     },
     date_start: {
         type: Date,

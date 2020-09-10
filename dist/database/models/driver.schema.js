@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DriverModel = exports.DriverSchema = void 0;
 const mongoose_1 = require("mongoose");
+const constants_1 = require("../../constants");
 exports.DriverSchema = new mongoose_1.Schema({
     name: {
         type: String,
@@ -27,7 +28,7 @@ exports.DriverSchema = new mongoose_1.Schema({
     status: {
         type: Number,
         required: true,
-        default: 1
+        default: constants_1.UserStatusEnum.PENDING
     },
     photo_driver: {
         type: String,
@@ -70,9 +71,10 @@ exports.DriverSchema = new mongoose_1.Schema({
         required: true,
         default: Date.now
     },
-    city_id: {
-        type: Number,
-        required: false
+    city: {
+        type: String,
+        required: false,
+        default: constants_1.CityEnum.LVIV
     }
 });
 exports.DriverModel = mongoose_1.model('drivers', exports.DriverSchema);

@@ -14,8 +14,8 @@ import {adminRouter, driverRouter, tripRouter, userRouter} from './routes';
 dotenv.config();
 
 const serverRequestLimit = rateLimit({
-  windowMs: 10000,
-  max: 100
+  windowMs: config.serverRateLimits.period,
+  max: config.serverRateLimits.maxRequests
 });
 
 class App {
@@ -76,7 +76,6 @@ class App {
   private mountRoutes(): void {
     this.app.use('/admins', adminRouter);
     this.app.use('/drivers', driverRouter);
-    // this.app.use('/auth', authRouter);
     this.app.use('/trips', tripRouter);
     this.app.use('/users', userRouter);
   }

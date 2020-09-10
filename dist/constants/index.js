@@ -10,11 +10,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./admin.interface"), exports);
-__exportStar(require("./comment.interface"), exports);
-__exportStar(require("./city.interface"), exports);
-__exportStar(require("./driver.interface"), exports);
-__exportStar(require("./driverstatus.interface"), exports);
-__exportStar(require("./trip.interface"), exports);
-__exportStar(require("./user.interface"), exports);
+__exportStar(require("./city.enum"), exports);
+__exportStar(require("./regexp.enum"), exports);
+__exportStar(require("./status-trip.enum"), exports);
+__exportStar(require("./user-status.enum"), exports);
 //# sourceMappingURL=index.js.map

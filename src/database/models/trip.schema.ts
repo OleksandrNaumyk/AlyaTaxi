@@ -1,5 +1,6 @@
 import {Document, Model, model, Schema} from 'mongoose';
 import {TripInterface} from '../../models';
+import {StatusTripEnum} from '../../constants';
 
 export type TripType = TripInterface & Document
 
@@ -36,9 +37,14 @@ export const TripSchema: Schema = new Schema<TripInterface>({
     type: String,
     required: false
   },
-  status_trip: {
+  rating: {
     type: Number,
     required: false
+  },
+  status_trip: {
+    type: Number,
+    required: false,
+    default: StatusTripEnum.REGISTRATED
   },
   date_start: {
     type: Date,

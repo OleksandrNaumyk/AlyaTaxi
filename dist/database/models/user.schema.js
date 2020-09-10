@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserModel = exports.UserSchema = void 0;
 const mongoose_1 = require("mongoose");
+const constants_1 = require("../../constants");
 exports.UserSchema = new mongoose_1.Schema({
     name: {
         type: String,
@@ -36,13 +37,15 @@ exports.UserSchema = new mongoose_1.Schema({
         type: Date,
         default: Date.now
     },
-    status_id: {
-        type: Number,
-        required: true
+    status: {
+        type: String,
+        required: true,
+        default: constants_1.UserStatusEnum.PENDING
     },
-    city_id: {
-        type: Number,
-        required: true
+    city: {
+        type: String,
+        required: true,
+        default: constants_1.CityEnum.LVIV
     }
 });
 exports.UserModel = mongoose_1.model('users', exports.UserSchema);

@@ -1,1 +1,0 @@
-{"version":3,"file":"admins.interface.js","sourceRoot":"","sources":["../../src/models/admins.interface.ts"],"names":[],"mappings":"","sourcesContent":["export interface AdminInterface {\r\n  _id: string;\r\n  name: string;\r\n  surname: string;\r\n  phone: string;\r\n  password: string;\r\n  age: number;\r\n  photo?: string;\r\n  city_id?: string;\r\n}\r\n"]}

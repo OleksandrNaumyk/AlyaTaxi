@@ -1,6 +1,6 @@
 import {Document, Model, model, Schema} from 'mongoose';
 import {UserInterface} from '../../models';
-import {CityEnum, UserStatusEnum} from "../../constants";
+import {CityEnum, UserStatusEnum} from '../../constants';
 
 export type UserType = UserInterface & Document
 

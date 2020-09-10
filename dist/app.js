@@ -13,8 +13,8 @@ const config_1 = require("./config");
 const routes_1 = require("./routes");
 dotenv.config();
 const serverRequestLimit = rateLimit({
-    windowMs: 10000,
-    max: 100
+    windowMs: config_1.config.serverRateLimits.period,
+    max: config_1.config.serverRateLimits.maxRequests
 });
 class App {
     constructor() {
@@ -59,7 +59,6 @@ class App {
     mountRoutes() {
         this.app.use('/admins', routes_1.adminRouter);
         this.app.use('/drivers', routes_1.driverRouter);
-        // this.app.use('/auth', authRouter);
         this.app.use('/trips', routes_1.tripRouter);
         this.app.use('/users', routes_1.userRouter);
     }
