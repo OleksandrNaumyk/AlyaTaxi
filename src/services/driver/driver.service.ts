@@ -7,6 +7,9 @@ class DriverService {
 
     return driverToCreate.save();
   }
+  findOneByParams(findObject: Partial<DriverInterface>) {
+    return DriverModel.findOne({findObject});
+  }
 }
 
 export const driverService = new DriverService();

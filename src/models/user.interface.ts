@@ -1,3 +1,10 @@
+import {ActionEnum} from '../constants';
+
+export interface UserTokenInterface {
+    token?: string,
+    action?: ActionEnum
+}
+
 export interface UserInterface {
   _id: string;
   name: string;
@@ -10,4 +17,5 @@ export interface UserInterface {
   date_add: string;
   status: string;
   city: string;
+  tokens?: [UserTokenInterface];
 }

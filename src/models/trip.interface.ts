@@ -1,7 +1,7 @@
 export interface TripInterface {
   _id: string;
-  start: string;
-  finish: string;
+  start: [x: string, y:string];
+  finish: [x: string, y:string];
   length: number;
   cost?: number;
   commission?: number;
@@ -11,4 +11,5 @@ export interface TripInterface {
   status_trip: number;
   date_start?: string;
   date_finish?: string;
+
 }

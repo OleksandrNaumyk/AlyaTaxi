@@ -7,6 +7,9 @@ class DriverService {
         const driverToCreate = new database_1.DriverModel(driver);
         return driverToCreate.save();
     }
+    findOneByParams(findObject) {
+        return database_1.DriverModel.findOne({ findObject });
+    }
 }
 exports.driverService = new DriverService();
 //# sourceMappingURL=driver.service.js.map

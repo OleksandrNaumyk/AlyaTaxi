@@ -7,6 +7,9 @@ class AdminService {
 
     return adminToCreate.save();
   }
+  findOneByParams(findObject: Partial<AdminInterface>) {
+    return AdminModel.findOne({findObject});
+  }
 }
 
 export const adminService = new AdminService();

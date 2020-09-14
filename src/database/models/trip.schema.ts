@@ -4,15 +4,18 @@ import {StatusTripEnum} from '../../constants';
 
 export type TripType = TripInterface & Document
 
+const x = {
+  type: String,
+  required: true
+};
+const y = {
+  type: String,
+  required: true
+};
+
 export const TripSchema: Schema = new Schema<TripInterface>({
-  start: {
-    type: String,
-    required: true
-  },
-  finish: {
-    type: String,
-    required: true
-  },
+  start: [x, y],
+  finish: [x, y],
   length: {
     type: Number,
     required: true

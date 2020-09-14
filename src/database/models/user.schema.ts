@@ -4,6 +4,11 @@ import {CityEnum, UserStatusEnum} from '../../constants';
 
 export type UserType = UserInterface & Document
 
+const tokenSubModel = {
+  token: String,
+  action: String
+};
+
 export const UserSchema: Schema = new Schema<UserInterface>({
   name: {
     type: String,
@@ -47,7 +52,8 @@ export const UserSchema: Schema = new Schema<UserInterface>({
     type: String,
     required: true,
     default: CityEnum.LVIV
-  }
+  },
+  tokens: [tokenSubModel]
 
 });
 

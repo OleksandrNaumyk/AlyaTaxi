@@ -7,6 +7,9 @@ class AdminService {
         const adminToCreate = new database_1.AdminModel(admin);
         return adminToCreate.save();
     }
+    findOneByParams(findObject) {
+        return database_1.AdminModel.findOne({ findObject });
+    }
 }
 exports.adminService = new AdminService();
 //# sourceMappingURL=admin.service.js.map

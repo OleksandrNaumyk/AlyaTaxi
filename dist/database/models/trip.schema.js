@@ -3,15 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TripModel = exports.TripSchema = void 0;
 const mongoose_1 = require("mongoose");
 const constants_1 = require("../../constants");
+const x = {
+    type: String,
+    required: true
+};
+const y = {
+    type: String,
+    required: true
+};
 exports.TripSchema = new mongoose_1.Schema({
-    start: {
-        type: String,
-        required: true
-    },
-    finish: {
-        type: String,
-        required: true
-    },
+    start: [x, y],
+    finish: [x, y],
     length: {
         type: Number,
         required: true
