@@ -4,6 +4,11 @@ import {CityEnum, UserStatusEnum} from '../../constants';
 
 export type AdminType = AdminInterface & Document
 
+const tokenSubModel = {
+  token: String,
+  action: String
+};
+
 export const AdminSchema: Schema = new Schema<AdminInterface>({
   name: {
     type: String,
@@ -39,7 +44,8 @@ export const AdminSchema: Schema = new Schema<AdminInterface>({
     type: String,
     required: false,
     default: CityEnum.LVIV
-  }
+  },
+  tokens: [tokenSubModel]
 
 });
 

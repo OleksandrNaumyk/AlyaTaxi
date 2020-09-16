@@ -1,3 +1,10 @@
+import {ActionEnum} from '../constants';
+
+export interface AdminTokenInterface {
+  token?: string,
+  action?: ActionEnum
+}
+
 export interface AdminInterface {
   _id: string;
   name: string;
@@ -7,4 +14,5 @@ export interface AdminInterface {
   age: number;
   photo?: string;
   city: string;
+  tokens?: [AdminTokenInterface];
 }

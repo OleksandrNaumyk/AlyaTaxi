@@ -4,6 +4,11 @@ import {CityEnum, UserStatusEnum} from '../../constants';
 
 export type DriverType = DriverInterface & Document
 
+const tokenSubModel = {
+  token: String,
+  action: String
+};
+
 export const DriverSchema: Schema = new Schema<DriverInterface>({
   name: {
     type: String,
@@ -27,7 +32,7 @@ export const DriverSchema: Schema = new Schema<DriverInterface>({
     required: true
   },
   status: {
-    type: Number,
+    type: String,
     required: true,
     default: UserStatusEnum.PENDING
   },
@@ -76,7 +81,8 @@ export const DriverSchema: Schema = new Schema<DriverInterface>({
     type: String,
     required: false,
     default: CityEnum.LVIV
-  }
+  },
+  tokens: [tokenSubModel]
 
 });
 

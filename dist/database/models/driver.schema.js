@@ -3,6 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DriverModel = exports.DriverSchema = void 0;
 const mongoose_1 = require("mongoose");
 const constants_1 = require("../../constants");
+const tokenSubModel = {
+    token: String,
+    action: String
+};
 exports.DriverSchema = new mongoose_1.Schema({
     name: {
         type: String,
@@ -26,7 +30,7 @@ exports.DriverSchema = new mongoose_1.Schema({
         required: true
     },
     status: {
-        type: Number,
+        type: String,
         required: true,
         default: constants_1.UserStatusEnum.PENDING
     },
@@ -75,7 +79,8 @@ exports.DriverSchema = new mongoose_1.Schema({
         type: String,
         required: false,
         default: constants_1.CityEnum.LVIV
-    }
+    },
+    tokens: [tokenSubModel]
 });
 exports.DriverModel = mongoose_1.model('drivers', exports.DriverSchema);
 //# sourceMappingURL=driver.schema.js.map

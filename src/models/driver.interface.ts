@@ -1,3 +1,10 @@
+import {ActionEnum} from '../constants';
+
+export interface DriverTokenInterface {
+  token?: string,
+  action?: ActionEnum
+}
+
 export interface DriverInterface {
   _id: string;
   name: string;
@@ -5,7 +12,7 @@ export interface DriverInterface {
   phone: string;
   password: string;
   age: number;
-  status: number;
+  status: string;
   photo_driver?: string;
   photo_car?: string;
   photo_doc_car?: string;
@@ -17,5 +24,6 @@ export interface DriverInterface {
   rating?: string;
   date_add: string;
   city: string;
+  tokens?: [DriverTokenInterface];
 }
 

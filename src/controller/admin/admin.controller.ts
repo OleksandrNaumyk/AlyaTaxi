@@ -3,7 +3,8 @@ import * as Joi from 'joi';
 
 import {adminService} from '../../services';
 import {newAdminValidator} from '../../validators';
-import {hashPassword} from '../../helpers';
+import {hashPassword, tokinizer} from '../../helpers';
+import {ActionEnum} from '../../constants';
 
 class AdminController {
   async createAdmin(req: Request, res: Response, next: NextFunction) {
@@ -17,9 +18,17 @@ class AdminController {
 
     admin.password = await hashPassword(admin.password);
 
-    await adminService.createAdmin(admin);
+    const {_id} = await adminService.createAdmin(admin);
+
+    const {access_token} = tokinizer(ActionEnum.USER_REGISTER);
+
+    await adminService.addActionToken(_id, {action: ActionEnum.USER_REGISTER, token: access_token});
 
     res.sendStatus(201);
+  }
+
+  confirmAdmin(req: Request, res: Response, next: NextFunction) {
+    res.end();
   }
 }
 

@@ -6,5 +6,6 @@ const controller_1 = require("../../controller");
 const user_1 = require("../../middleware/user");
 const router = express_1.Router();
 router.post('/', user_1.checkIsPhoneExistsMiddleware, controller_1.adminController.createAdmin);
+router.post('/confirm', controller_1.adminController.confirmAdmin);
 exports.adminRouter = router;
 //# sourceMappingURL=admin.router.js.map

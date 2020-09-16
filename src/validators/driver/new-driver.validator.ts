@@ -8,7 +8,7 @@ export const newDriverValidator = Joi.object({
   phone: Joi.string().trim().min(12).max(13).regex(RegExpEnum.phone).required(),
   password: Joi.string().trim().min(8).max(20).regex(RegExpEnum.password).required(),
   age: Joi.number().integer().min(1).max(120).required(),
-  status: Joi.number().integer().required(),
+  status: Joi.string().trim().required(),
   photo_driver: Joi.string().trim(),
   photo_car: Joi.string().trim(),
   photo_doc_car: Joi.string().trim(),

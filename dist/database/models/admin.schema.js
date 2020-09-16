@@ -3,6 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminModel = exports.AdminSchema = void 0;
 const mongoose_1 = require("mongoose");
 const constants_1 = require("../../constants");
+const tokenSubModel = {
+    token: String,
+    action: String
+};
 exports.AdminSchema = new mongoose_1.Schema({
     name: {
         type: String,
@@ -38,7 +42,8 @@ exports.AdminSchema = new mongoose_1.Schema({
         type: String,
         required: false,
         default: constants_1.CityEnum.LVIV
-    }
+    },
+    tokens: [tokenSubModel]
 });
 exports.AdminModel = mongoose_1.model('admins', exports.AdminSchema);
 //# sourceMappingURL=admin.schema.js.map

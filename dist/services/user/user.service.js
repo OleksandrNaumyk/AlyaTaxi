@@ -9,16 +9,14 @@ class UserService {
         return userToCreate.save();
     }
     addActionToken(id, tokenObject) {
-        return database_1.UserModel.aggregate([
-            {
-                $match: {
-                    _id: mongoose_1.Types.ObjectId(id)
-                }
+        return database_1.UserModel.update({ _id: mongoose_1.Types.ObjectId(id) }, {
+            $push: {
+                tokens: tokenObject
             }
-        ]);
+        });
     }
     findOneByParams(findObject) {
-        return database_1.UserModel.findOne({ findObject });
+        return database_1.UserModel.findOne(findObject);
     }
 }
 exports.userService = new UserService();

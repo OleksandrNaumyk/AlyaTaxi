@@ -1,9 +1,9 @@
 import {NextFunction, Request, Response} from 'express';
 import * as Joi from 'joi';
 
-//import {ActionEnum} from '../../constants';
+import {ActionEnum} from '../../constants';
 import {UserInterface} from '../../models';
-import {hashPassword} from '../../helpers';
+import {hashPassword, tokinizer} from '../../helpers';
 import {userService} from '../../services';
 import {newUserValidator} from '../../validators';
 
@@ -19,9 +19,11 @@ class UserController {
 
     user.password = await hashPassword(user.password);
 
-    await userService.createUser(user);
+    const {_id} = await userService.createUser(user);
 
-    //   const {access_token} = tokinizer(ActionEnum.USER_REGISTER);
+    const {access_token} = tokinizer(ActionEnum.USER_REGISTER);
+
+    await userService.addActionToken(_id, {action: ActionEnum.USER_REGISTER, token: access_token});
 
     res.sendStatus(201);
   }

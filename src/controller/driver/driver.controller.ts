@@ -3,7 +3,8 @@ import * as Joi from 'joi';
 
 import {driverService} from '../../services';
 import {newDriverValidator} from '../../validators';
-import {hashPassword} from '../../helpers';
+import {hashPassword, tokinizer} from '../../helpers';
+import {ActionEnum} from '../../constants';
 
 class DriverController {
   async createDriver(req: Request, res: Response, next: NextFunction) {
@@ -17,9 +18,17 @@ class DriverController {
 
     driver.password = await hashPassword(driver.password);
 
-    await driverService.createDriver(driver);
+    const {_id} = await driverService.createDriver(driver);
+
+    const {access_token} = tokinizer(ActionEnum.USER_REGISTER);
+
+    await driverService.addActionToken(_id, {action: ActionEnum.USER_REGISTER, token: access_token});
 
     res.sendStatus(201);
+  }
+
+  confirmDriver(req: Request, res: Response, next: NextFunction) {
+    res.end();
   }
 }
 
