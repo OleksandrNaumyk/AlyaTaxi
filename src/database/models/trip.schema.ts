@@ -1,6 +1,6 @@
 import {Document, Model, model, Schema} from 'mongoose';
 import {TripInterface} from '../../models';
-import {StatusTripEnum} from '../../constants';
+import {StatusTripEnum, TableNamesEnum} from '../../constants';
 
 export type TripType = TripInterface & Document
 
@@ -28,13 +28,13 @@ export const TripSchema: Schema = new Schema<TripInterface>({
     type: Number,
     required: false
   },
-  id_user: {
-    type: Number,
-    required: false
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: TableNamesEnum.USER
   },
-  id_driver: {
-    type: Number,
-    required: false
+  driverId: {
+    type: Schema.Types.ObjectId,
+    ref: TableNamesEnum.DRIVER
   },
   comment: {
     type: String,
@@ -60,4 +60,4 @@ export const TripSchema: Schema = new Schema<TripInterface>({
 
 });
 
-export const TripModel: Model<any> = model<TripType>('trips', TripSchema);
+export const TripModel: Model<TripType> = model<TripType>(TableNamesEnum.TRIP, TripSchema);

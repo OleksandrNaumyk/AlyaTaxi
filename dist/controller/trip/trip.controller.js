@@ -1,19 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tripController = void 0;
-const Joi = require("joi");
 const services_1 = require("../../services");
-const validators_1 = require("../../validators");
+const constants_1 = require("../../constants");
 class TripController {
     async createTrip(req, res, next) {
+        const { _id } = req.user;
         const trip = req.body;
-        const { error } = Joi.validate(trip, validators_1.newTripValidator);
-        if (error) {
-            return next(new Error(error.details[0].message));
-        }
-        await services_1.tripService.createTrip(trip);
-        res.sendStatus(201);
+        const newTrip = await services_1.tripService.createTrip({ ...trip, userId: _id });
+        await services_1.logService.createLog({
+            userId: _id,
+            event: constants_1.LogEnum.PRODUCT_CREATED,
+            data: {
+                tripId: newTrip._id,
+                title: newTrip.title
+            }
+        });
+        res.json(newTrip);
+    }
+    catch(e) {
+        next(e);
     }
 }
+;
 exports.tripController = new TripController();
 //# sourceMappingURL=trip.controller.js.map

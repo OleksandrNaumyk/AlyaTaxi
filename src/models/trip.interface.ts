@@ -5,8 +5,8 @@ export interface TripInterface {
   length: number;
   cost?: number;
   commission?: number;
-  id_user?: number;
-  id_driver?: number;
+  userId: string;
+  driverId?: string;
   comment?: string;
   status_trip: number;
   date_start?: string;

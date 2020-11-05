@@ -72,8 +72,7 @@ exports.DriverSchema = new mongoose_1.Schema({
     },
     date_add: {
         type: Date,
-        required: true,
-        default: Date.now
+        default: new Date().toISOString()
     },
     city: {
         type: String,
@@ -81,6 +80,8 @@ exports.DriverSchema = new mongoose_1.Schema({
         default: constants_1.CityEnum.LVIV
     },
     tokens: [tokenSubModel]
+}, {
+    timestamps: true
 });
 exports.DriverModel = mongoose_1.model('drivers', exports.DriverSchema);
 //# sourceMappingURL=driver.schema.js.map

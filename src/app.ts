@@ -10,6 +10,7 @@ import * as path from 'path';
 import * as mongoose from 'mongoose';
 import {config} from './config';
 import {adminRouter, driverRouter, tripRouter, userRouter} from './routes';
+import {ResponseStatusCodesEnum} from './constants';
 
 dotenv.config();
 
@@ -52,7 +53,7 @@ class App {
 
   private customErrorHandler(err: any, req: Request, res: Response, next: NextFunction): void {
     res
-      .status(err.status || 500)
+      .status(err.status || ResponseStatusCodesEnum.SERVER)
       .json({
         message: err.message || 'Unknown Error',
         code: err.code

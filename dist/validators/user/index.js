@@ -11,4 +11,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./new-user.validator"), exports);
+__exportStar(require("./single-password.validator"), exports);
+__exportStar(require("./phone-validator"), exports);
 //# sourceMappingURL=index.js.map

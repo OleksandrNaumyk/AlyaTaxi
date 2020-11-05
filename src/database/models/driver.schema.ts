@@ -74,8 +74,7 @@ export const DriverSchema: Schema = new Schema<DriverInterface>({
   },
   date_add: { //Дата реєстрації
     type: Date,
-    required: true,
-    default: Date.now
+    default: new Date().toISOString()
   },
   city: {
     type: String,
@@ -83,7 +82,8 @@ export const DriverSchema: Schema = new Schema<DriverInterface>({
     default: CityEnum.LVIV
   },
   tokens: [tokenSubModel]
-
+}, {
+  timestamps: true
 });
 
 export const DriverModel: Model<any> = model<DriverType>('drivers', DriverSchema);

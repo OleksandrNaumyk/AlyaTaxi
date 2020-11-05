@@ -1,6 +1,6 @@
 export interface DriverStatusInterface {
   _id: string;
-  driverstatusid: string;
+  driverstatusId: string;
   rating: string;
   counttrip: number;
 }

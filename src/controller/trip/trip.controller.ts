@@ -1,23 +1,31 @@
-import {NextFunction, Request, Response} from 'express';
-import * as Joi from 'joi';
+import {NextFunction, Response} from 'express';
 
-import {tripService} from '../../services';
-import {newTripValidator} from '../../validators';
+import {logService, tripService} from '../../services';
+import {UserInterface} from '../../models';
+import {IExtentedRequest} from '../../models/IRequestExtended.interface';
+import {LogEnum} from '../../constants';
 
 class TripController {
-  async createTrip(req: Request, res: Response, next: NextFunction) {
+  async createTrip(req: IExtentedRequest, res: Response, next: NextFunction) {
+    const {_id} = req.user as UserInterface;
     const trip = req.body;
 
-    const {error} = Joi.validate(trip, newTripValidator);
+    const newTrip = await tripService.createTrip({...trip, userId: _id});
 
-    if (error) {
-      return next(new Error(error.details[0].message));
-    }
+    await logService.createLog({
+      userId: _id,
+      event: LogEnum.TRIP_CREATED,
+      data: {
+        tripId: newTrip._id,
+        driverId: newTrip.driverId
+      }
+    });
 
-    await tripService.createTrip(trip);
-
-    res.sendStatus(201);
+    res.json(newTrip);
   }
-}
+  // catch (e) {
+  //   next(e);
+  //  }
+};
 
 export const tripController = new TripController();

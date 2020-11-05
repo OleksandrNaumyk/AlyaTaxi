@@ -39,7 +39,7 @@ exports.UserSchema = new mongoose_1.Schema({
     },
     date_add: {
         type: Date,
-        default: Date.now
+        default: new Date().toISOString()
     },
     status: {
         type: String,
@@ -52,6 +52,8 @@ exports.UserSchema = new mongoose_1.Schema({
         default: constants_1.CityEnum.LVIV
     },
     tokens: [tokenSubModel]
+}, {
+    timestamps: true
 });
-exports.UserModel = mongoose_1.model('users', exports.UserSchema);
+exports.UserModel = mongoose_1.model(constants_1.TableNamesEnum.USER, exports.UserSchema);
 //# sourceMappingURL=user.schema.js.map

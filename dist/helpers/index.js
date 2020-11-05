@@ -11,5 +11,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./password-hasher.helper"), exports);
+__exportStar(require("./token-verificator.helper"), exports);
 __exportStar(require("./tokinizer"), exports);
 //# sourceMappingURL=index.js.map

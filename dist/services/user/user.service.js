@@ -8,15 +8,26 @@ class UserService {
         const userToCreate = new database_1.UserModel(user);
         return userToCreate.save();
     }
-    addActionToken(id, tokenObject) {
-        return database_1.UserModel.update({ _id: mongoose_1.Types.ObjectId(id) }, {
+    addActionToken(userId, tokenObject) {
+        return database_1.UserModel.update({ _id: mongoose_1.Types.ObjectId(userId) }, {
             $push: {
                 tokens: tokenObject
             }
         });
     }
+    updateUserByParams(params, update) {
+        return database_1.UserModel.updateOne(params, update, { new: true });
+    }
     findOneByParams(findObject) {
         return database_1.UserModel.findOne(findObject);
+    }
+    findUserByActionToken(action, token) {
+        return database_1.UserModel.findOne({
+            $and: [
+                { 'tokens.action': action },
+                { 'tokens.token': token }
+            ]
+        });
     }
 }
 exports.userService = new UserService();

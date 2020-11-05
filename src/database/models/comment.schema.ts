@@ -11,7 +11,7 @@ export const CommentSchema: Schema = new Schema<CommentInterface>({
   date_comment: {
     type: Date,
     required: true,
-    default: Date.now
+    default: new Date().toISOString()
   },
   id_trip: {
     type: String,

@@ -11,6 +11,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const config_1 = require("./config");
 const routes_1 = require("./routes");
+const constants_1 = require("./constants");
 dotenv.config();
 const serverRequestLimit = rateLimit({
     windowMs: config_1.config.serverRateLimits.period,
@@ -50,7 +51,7 @@ class App {
     }
     customErrorHandler(err, req, res, next) {
         res
-            .status(err.status || 500)
+            .status(err.status || constants_1.ResponseStatusCodesEnum.SERVER)
             .json({
             message: err.message || 'Unknown Error',
             code: err.code

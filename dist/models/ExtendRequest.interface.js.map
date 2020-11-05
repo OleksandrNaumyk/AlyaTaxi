@@ -1,0 +1,1 @@
+{"version":3,"file":"extendRequest.interface.js","sourceRoot":"","sources":["../../src/models/extendRequest.interface.ts"],"names":[],"mappings":"","sourcesContent":["import {UserInterface} from './user.interface';\n\nexport interface IExtentedRequest extends Request{\n  user: UserInterface\n}\n"]}

@@ -1,6 +1,6 @@
 import {Document, Model, model, Schema} from 'mongoose';
 import {UserInterface} from '../../models';
-import {CityEnum, UserStatusEnum} from '../../constants';
+import {CityEnum, TableNamesEnum, UserStatusEnum} from '../../constants';
 
 export type UserType = UserInterface & Document
 
@@ -41,7 +41,7 @@ export const UserSchema: Schema = new Schema<UserInterface>({
   },
   date_add: { //Дата реєстрації
     type: Date,
-    default: Date.now
+    default: new Date().toISOString()
   },
   status: {
     type: String,
@@ -54,7 +54,8 @@ export const UserSchema: Schema = new Schema<UserInterface>({
     default: CityEnum.LVIV
   },
   tokens: [tokenSubModel]
-
+}, {
+  timestamps: true
 });
 
-export const UserModel: Model<any> = model<UserType>('users', UserSchema);
+export const UserModel: Model<UserType> = model<UserType>(TableNamesEnum.USER, UserSchema);

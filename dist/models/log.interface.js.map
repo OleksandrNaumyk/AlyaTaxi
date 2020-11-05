@@ -1,0 +1,1 @@
+{"version":3,"file":"log.interface.js","sourceRoot":"","sources":["../../src/models/log.interface.ts"],"names":[],"mappings":"","sourcesContent":["export interface LogInterface {\r\n  event: any,\r\n  userId: string,\r\n  data: any,\r\n  date_add: string\r\n}\r\n"]}

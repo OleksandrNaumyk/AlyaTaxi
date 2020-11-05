@@ -26,13 +26,13 @@ exports.TripSchema = new mongoose_1.Schema({
         type: Number,
         required: false
     },
-    id_user: {
-        type: Number,
-        required: false
+    userId: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: constants_1.TableNamesEnum.USER
     },
-    id_driver: {
-        type: Number,
-        required: false
+    driverId: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: constants_1.TableNamesEnum.DRIVER
     },
     comment: {
         type: String,
@@ -56,5 +56,5 @@ exports.TripSchema = new mongoose_1.Schema({
         required: false
     }
 });
-exports.TripModel = mongoose_1.model('trips', exports.TripSchema);
+exports.TripModel = mongoose_1.model(constants_1.TableNamesEnum.TRIP, exports.TripSchema);
 //# sourceMappingURL=trip.schema.js.map
