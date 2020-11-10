@@ -4,6 +4,7 @@ exports.ResponseStatusCodesEnum = void 0;
 var ResponseStatusCodesEnum;
 (function (ResponseStatusCodesEnum) {
     ResponseStatusCodesEnum[ResponseStatusCodesEnum["CREATED"] = 201] = "CREATED";
+    ResponseStatusCodesEnum[ResponseStatusCodesEnum["NO_CONTENT"] = 204] = "NO_CONTENT";
     ResponseStatusCodesEnum[ResponseStatusCodesEnum["BAD_REQUEST"] = 400] = "BAD_REQUEST";
     ResponseStatusCodesEnum[ResponseStatusCodesEnum["UNAUTHORIZED"] = 401] = "UNAUTHORIZED";
     ResponseStatusCodesEnum[ResponseStatusCodesEnum["FORBIDDEN"] = 403] = "FORBIDDEN";

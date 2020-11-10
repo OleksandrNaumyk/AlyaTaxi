@@ -7,6 +7,6 @@ var LogEnum;
     LogEnum["USER_LOGOUT"] = "user_logout";
     LogEnum["USER_REGISTERED"] = "user_registered";
     LogEnum["USER_CONFIRMED"] = "user_confirmed";
-    LogEnum["PRODUCT_CREATED"] = "product_created";
+    LogEnum["TRIP_CREATED"] = "trip_created";
 })(LogEnum = exports.LogEnum || (exports.LogEnum = {}));
 //# sourceMappingURL=logs.enum.js.map

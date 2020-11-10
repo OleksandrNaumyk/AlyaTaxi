@@ -1,31 +1,33 @@
 import {NextFunction, Response} from 'express';
 
 import {logService, tripService} from '../../services';
-import {UserInterface} from '../../models';
-import {IExtentedRequest} from '../../models/IRequestExtended.interface';
+import {RequestExtendedInterface, UserInterface} from '../../models';
 import {LogEnum} from '../../constants';
 
 class TripController {
-  async createTrip(req: IExtentedRequest, res: Response, next: NextFunction) {
-    const {_id} = req.user as UserInterface;
-    const trip = req.body;
+  async createTrip(req: RequestExtendedInterface, res: Response, next: NextFunction) {
 
-    const newTrip = await tripService.createTrip({...trip, userId: _id});
+    try {
+      const {_id} = req.user as UserInterface;
+      const trip = req.body;
 
-    await logService.createLog({
-      userId: _id,
-      event: LogEnum.TRIP_CREATED,
-      data: {
-        tripId: newTrip._id,
-        driverId: newTrip.driverId
-      }
-    });
+      const newTrip = await tripService.createTrip({...trip, userId: _id});
 
-    res.json(newTrip);
+      await logService.createLog({
+        userId: _id,
+        event: LogEnum.TRIP_CREATED,
+        data: {
+          tripId: newTrip._id,
+          driverId: newTrip.driverId
+        }
+      });
+
+      res.json(newTrip);
+    }
+    catch (e) {
+      next(e);
+    }
   }
-  // catch (e) {
-  //   next(e);
-  //  }
-};
+}
 
 export const tripController = new TripController();

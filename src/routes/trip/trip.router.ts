@@ -1,4 +1,5 @@
 import {Router} from 'express';
+
 import {tripController} from '../../controller';
 import {checkIsUserExistByPhoneMiddleware} from '../../middleware/user';
 
