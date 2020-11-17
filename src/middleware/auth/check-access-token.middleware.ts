@@ -6,22 +6,27 @@ import {tokenVerificator} from '../../helpers';
 import {authService} from '../../services/auth';
 
 export const checkAccessTokenMiddleware = async (req: RequestExtendedInterface, res: Response, next: NextFunction): Promise<void> => {
-  const token = req.get(RequestHeadersEnum.AUTHORIZATION);
+  try {
 
-  if (!token) {
-    return next(new ErrorHandler(ResponseStatusCodesEnum.BAD_REQUEST, customErrors.BAD_REQUEST_NO_TOKEN.message));
+    const token = req.get(RequestHeadersEnum.AUTHORIZATION);
+
+    if (!token) {
+      return next(new ErrorHandler(ResponseStatusCodesEnum.BAD_REQUEST, customErrors.BAD_REQUEST_NO_TOKEN.message));
+    }
+
+    await tokenVerificator(ActionEnum.USER_AUTH, token);
+
+    const userByToken = await authService.findUserByToken({accessToken: token});
+
+    if (!userByToken) {
+      return next(new ErrorHandler(ResponseStatusCodesEnum.BAD_REQUEST, customErrors.NOT_FOUND.message));
+    }
+
+    req.user = userByToken;
+
+    next();
+  } catch (e) {
+    next(e);
   }
 
-  const xxx = await tokenVerificator(ActionEnum.USER_AUTH, token);
-  console.log(xxx);
-
-  const userByToken = await authService.findUserByToken({accessToken: token});
-
-  if (!userByToken) {
-    return next(new ErrorHandler(ResponseStatusCodesEnum.BAD_REQUEST, customErrors.NOT_FOUND.message));
-  }
-
-  req.user = userByToken;
-
-  next();
 };

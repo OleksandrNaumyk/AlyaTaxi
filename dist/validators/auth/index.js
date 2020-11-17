@@ -10,8 +10,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./check-is-phone-exists.middleware"), exports);
-__exportStar(require("./check-is-user-exist-by-phone.middleware"), exports);
-__exportStar(require("./chek-is-user-confirmed.middleware"), exports);
-__exportStar(require("./check-is-user-valid.middleware"), exports);
+__exportStar(require("./phone-password.validator"), exports);
 //# sourceMappingURL=index.js.map

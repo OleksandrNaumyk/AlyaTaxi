@@ -16,6 +16,15 @@ exports.customErrors = {
     },
     NOT_FOUND: {
         message: 'Record not found'
+    },
+    //401
+    UNAUTHORIZER_BAD_TOKEN: {
+        message: 'Something wrong with token'
+    },
+    //403
+    FORBIDDEN_USER_NOT_CONFIRMED: {
+        message: 'User is not confirmed',
+        code: 4031
     }
 };
 //# sourceMappingURL=custom-errors.js.map

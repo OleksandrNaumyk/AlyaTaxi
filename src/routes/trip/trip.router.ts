@@ -1,10 +1,11 @@
 import {Router} from 'express';
 
 import {tripController} from '../../controller';
-import {checkIsUserExistByPhoneMiddleware} from '../../middleware/user';
+import {checkAccessTokenMiddleware} from '../../middleware/auth';
+import {newTripValidatorMiddleware} from '../../middleware/validators';
 
 const router = Router();
 
-router.post('/', checkIsUserExistByPhoneMiddleware, tripController.createTrip);
+router.post('/', checkAccessTokenMiddleware, newTripValidatorMiddleware, tripController.createTrip);
 
 export const tripRouter = router;

@@ -62,6 +62,7 @@ class App {
         this.app.use('/drivers', routes_1.driverRouter);
         this.app.use('/trips', routes_1.tripRouter);
         this.app.use('/users', routes_1.userRouter);
+        this.app.use('/auth', routes_1.authRouter);
     }
 }
 exports.app = new App().app;

@@ -10,6 +10,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./phone-password-validator.middleware"), exports);
 __exportStar(require("./phone-validator.middleware"), exports);
+__exportStar(require("./new-trip-validator.middleware"), exports);
 __exportStar(require("./single-password-validator.middleware"), exports);
 //# sourceMappingURL=index.js.map

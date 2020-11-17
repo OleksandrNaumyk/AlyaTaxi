@@ -9,7 +9,7 @@ import * as morgan from 'morgan';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
 import {config} from './config';
-import {adminRouter, driverRouter, tripRouter, userRouter} from './routes';
+import {adminRouter, authRouter, driverRouter, tripRouter, userRouter} from './routes';
 import {ResponseStatusCodesEnum} from './constants';
 
 dotenv.config();
@@ -79,6 +79,7 @@ class App {
     this.app.use('/drivers', driverRouter);
     this.app.use('/trips', tripRouter);
     this.app.use('/users', userRouter);
+    this.app.use('/auth', authRouter);
   }
 }
 
