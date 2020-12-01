@@ -10,7 +10,7 @@ exports.checkIsUserExistByPhoneMiddleware = async (req, res, next) => {
     if (!userByPhone) {
         return next(new errors_1.ErrorHandler(constants_1.ResponseStatusCodesEnum.NOT_FOUND, errors_1.customErrors.NOT_FOUND.message));
     }
-    // req.user = userByPhone;
+    req.user = userByPhone;
     next();
 };
 //# sourceMappingURL=check-is-user-exist-by-phone.middleware.js.map

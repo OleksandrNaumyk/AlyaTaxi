@@ -8,6 +8,7 @@ import {customErrors, ErrorHandler} from '../../errors';
 
 class AuthController {
   async authUser(req: RequestExtendedInterface, res: Response, next: NextFunction) {
+    console.log('here');
     try {
       const {_id, password} = req.user as UserInterface;
       const authInfo = req.body;

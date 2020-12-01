@@ -1,17 +1,20 @@
 import {ResponseStatusCodesEnum} from '../../constants';
 import {customErrors, ErrorHandler} from '../../errors';
-import {NextFunction, Request, Response} from 'express';
-import {UserInterface} from '../../models';
+import {NextFunction, Response} from 'express';
+import {RequestExtendedInterface, UserInterface} from '../../models';
 import {userService} from '../../services';
 
-export const checkIsUserExistByPhoneMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void | NextFunction> => {
-  const {phone} = req.body as UserInterface;
-  const userByPhone = await userService.findOneByParams({phone});
+export const checkIsUserExistByPhoneMiddleware =
+  async (req: RequestExtendedInterface, res: Response, next: NextFunction): Promise<void | NextFunction> => {
+    const {phone} = req.body as UserInterface;
 
-  if (!userByPhone) {
-    return next(new ErrorHandler(ResponseStatusCodesEnum.NOT_FOUND, customErrors.NOT_FOUND.message));
-  }
+    const userByPhone = await userService.findOneByParams({phone});
 
-  // req.user = userByPhone;
-  next();
-};
+    if (!userByPhone) {
+      return next(new ErrorHandler(ResponseStatusCodesEnum.NOT_FOUND, customErrors.NOT_FOUND.message));
+    }
+
+    req.user = userByPhone;
+
+    next();
+  };

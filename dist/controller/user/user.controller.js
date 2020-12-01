@@ -16,6 +16,7 @@ class UserController {
         res.sendStatus(constants_1.ResponseStatusCodesEnum.CREATED);
     }
     async confirmUser(req, res, next) {
+        console.log(req.user);
         const { _id, status, tokens = [] } = req.user;
         const tokenToDelete = req.get(constants_1.RequestHeadersEnum.AUTHORIZATION);
         if (status !== constants_1.UserStatusEnum.PENDING) {

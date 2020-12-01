@@ -22,9 +22,11 @@ class UserController {
   }
 
   async confirmUser(req: RequestExtendedInterface, res: Response, next: NextFunction) {
+    console.log(req.user);
 
     const {_id, status, tokens =[]} = req.user as UserInterface;
     const tokenToDelete = req.get(RequestHeadersEnum.AUTHORIZATION);
+
 
     if (status !== UserStatusEnum.PENDING) {
       return next(

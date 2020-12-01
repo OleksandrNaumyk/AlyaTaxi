@@ -20,11 +20,13 @@ exports.TripSchema = new mongoose_1.Schema({
     },
     cost: {
         type: Number,
-        required: false
+        required: true,
+        default: 0
     },
     commission: {
         type: Number,
-        required: false
+        required: true,
+        default: 0
     },
     userId: {
         type: mongoose_1.Schema.Types.ObjectId,
@@ -45,7 +47,8 @@ exports.TripSchema = new mongoose_1.Schema({
     status_trip: {
         type: Number,
         required: false,
-        default: constants_1.StatusTripEnum.REGISTRATED
+        default: constants_1.StatusTripEnum.REGISTRATED,
+        enum: Object.values(constants_1.StatusTripEnum)
     },
     date_start: {
         type: Date,

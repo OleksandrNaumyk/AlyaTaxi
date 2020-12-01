@@ -22,11 +22,13 @@ export const TripSchema: Schema = new Schema<TripInterface>({
   },
   cost: {
     type: Number,
-    required: false
+    required: true,
+    default: 0
   },
   commission: {
     type: Number,
-    required: false
+    required: true,
+    default: 0
   },
   userId: {
     type: Schema.Types.ObjectId,
@@ -47,7 +49,8 @@ export const TripSchema: Schema = new Schema<TripInterface>({
   status_trip: {
     type: Number,
     required: false,
-    default: StatusTripEnum.REGISTRATED
+    default: StatusTripEnum.REGISTRATED,
+    enum: Object.values(StatusTripEnum)
   },
   date_start: {
     type: Date,

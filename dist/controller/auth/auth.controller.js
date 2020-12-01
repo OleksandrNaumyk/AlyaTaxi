@@ -8,6 +8,7 @@ const services_1 = require("../../services");
 const errors_1 = require("../../errors");
 class AuthController {
     async authUser(req, res, next) {
+        console.log('here');
         try {
             const { _id, password } = req.user;
             const authInfo = req.body;
